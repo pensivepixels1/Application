@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PensivePixels — Interactive Lead Form</title>
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+  <!-- floating decorative orbs -->
+  <div class="orb orb--left" aria-hidden="true"></div>
+  <div class="orb orb--right" aria-hidden="true"></div>
+
+  <!-- cursor follower -->
+  <div id="cursor-follower" aria-hidden="true"></div>
+  <main class="shell">
+    <!-- <header class="hero">
+      <div class="brand">
+        <img src="../files/logo_pensive" alt="PensivePixels Logo" class="brand-logo">
+        <h1>PensivePixels</h1>
+      </div>
+      <p class="lead">Where imagination meets impact — tell us your story, we’ll make it shine.</p>
+    </header> -->
+  <main class="shell">
+    <header class="hero">
+      <div class="brand">
+        <i class="fa-solid fa-lightbulb-on"></i>
+        <h1>PensivePixels</h1>
+      </div>
+      <p class="lead">Let's grow your business together — fill this quick & delightful form and we'll take it from there.</p>
+      <p class="micro">We’ll handle design, marketing & growth — your idea, elevated.</p>
+    </header>
+
+    <section class="card">
+      <div class="card__intro">
+        <h2>Get started — tell us a little about your business</h2>
+        <p class="note"><i class="fa-regular fa-circle-info"></i> Only the most essential questions are required. Filling services helps us prepare a tailored plan.</p>
+      </div>
+
+      <form id="leadForm" class="form" autocomplete="off" novalidate>
+        <div class="progress-row">
+          <div class="progress" id="progressBar" style="width:0%"></div>
+        </div>
+
+        <!-- STEP 1 -->
+        <div class="step active" data-step="0">
+          <label class="field">
+            <span class="field__label"><i class="fa-regular fa-user"></i> Full Name <em>*</em></span>
+            <input id="fullName" name="fullName" type="text" placeholder="Your Name" required>
+          </label>
+
+          <label class="field">
+            <span class="field__label"><i class="fa-solid fa-building"></i> Business / Brand Name</span>
+            <input id="businessName" name="businessName" type="text" placeholder="Your Brand or Business Name">
+          </label>
+
+          <div class="row two">
+            <label class="field">
+              <span class="field__label"><i class="fa-solid fa-briefcase"></i> Type of Business</span>
+              <select id="businessType" name="businessType" >
+                <option value="">Choose (optional)</option>
+                <option>Food / Cafe</option>
+                <option>Retail / Boutique</option>
+                <option>Services / Salon</option>
+                <option>Education / Coaching</option>
+                <option>Tech / Startup</option>
+                <option>Other</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span class="field__label"><i class="fa-brands fa-instagram"></i> Instagram / Website</span>
+              <input id="social" name="social" placeholder="@yourhandle or www.site.com">
+            </label>
+          </div>
+
+          <!-- <div class="actions">
+            <button type="button" class="btn btn--ghost next">Next</button>
+          </div> -->
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step" data-step="1">
+          <label class="field">
+            <span class="field__label"><i class="fa-solid fa-list-check"></i> What services interest you? <em>*</em></span>
+            <div class="checkbox-grid" id="servicesGrid">
+              <label class="chk">
+                <input type="checkbox" name="services" value="Logo & Branding">
+                <span class="chk__box"></span>
+                <span class="chk__label">🎨 Logo & Branding</span>
+              </label>
+
+              <label class="chk">
+                <input type="checkbox" name="services" value="Social Media">
+                <span class="chk__box"></span>
+                <span class="chk__label">📱 Social Media</span>
+              </label>
+
+              <label class="chk">
+                <input type="checkbox" name="services" value="Poster / Ads">
+                <span class="chk__box"></span>
+                <span class="chk__label">🧾 Poster / Ads</span>
+              </label>
+
+              <label class="chk">
+                <input type="checkbox" name="services" value="Strategy & Planning">
+                <span class="chk__box"></span>
+                <span class="chk__label">📊 Strategy</span>
+              </label>
+
+              <label class="chk">
+                <input type="checkbox" name="services" value="Content / Reels">
+                <span class="chk__box"></span>
+                <span class="chk__label">💬 Content / Reels</span>
+              </label>
+
+              <label class="chk">
+                <input type="checkbox" name="services" value="Website Development">
+                <span class="chk__box"></span>
+                <span class="chk__label">💻 Website</span>
+              </label>
+            </div>
+          </label>
+
+          <label class="field">
+            <span class="field__label"><i class="fa-solid fa-phone"></i> Preferred contact method <em>*</em></span>
+            <div class="radio-row">
+              <label class="radio">
+                <input type="radio" name="contactMethod" value="Phone" required>
+                <span>📞 Phone</span>
+              </label>
+              <label class="radio">
+                <input type="radio" name="contactMethod" value="WhatsApp">
+                <span>💬 WhatsApp</span>
+              </label>
+              <label class="radio">
+                <input type="radio" name="contactMethod" value="Email">
+                <span>✉️ Email</span>
+              </label>
+            </div>
+          </label>
+
+          <label class="field">
+            <span class="field__label"><i class="fa-regular fa-envelope"></i> Contact Details <em>*</em></span>
+            <input id="contactDetails" name="contactDetails" type="text" placeholder="Phone number or email" required>
+          </label>
+
+          <!-- <div class="actions">
+            <button type="button" class="btn prev">Back</button>
+            <button type="button" class="btn next">Next</button>
+          </div> -->
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step" data-step="2">
+          <label class="field">
+            <span class="field__label"><i class="fa-regular fa-comment-dots"></i> Anything else you'd like to share?</span>
+            <textarea id="additionalInfo" name="additionalInfo" rows="3" placeholder="Goals, budget range (optional), launch timeline..."></textarea>
+          </label>
+
+          <label class="field">
+            <span class="field__label"><i class="fa-solid fa-question"></i> How did you hear about PensivePixels?</span>
+            <select id="hearAbout" name="hearAbout">
+              <option>Instagram</option>
+              <option>Friend / Referral</option>
+              <option>WhatsApp</option>
+              <option>Poster / Ads</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <div class="center">
+            <button type="button" class="btn prev">Back</button>
+            <button type="submit" class="btn btn--accent" id="submitBtn">
+              <span class="btn__text">Submit</span>
+              <i class="fa-solid fa-paper-plane btn__icon" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <footer class="foot">
+      <small>© 2025 PensivePixels — Your story, beautifully told. <a href="https://instagram.com/pensivepixels_1" target="_blank">@pensivepixels_1</a></small>
+    </footer>
+  </main>
+
+  <!-- success modal -->
+  <div id="successModal" class="modal" role="dialog" aria-hidden="true">
+    <div class="modal__card">
+      <div class="modal__icon">🎉</div>
+      <h3>Thanks — we've received your details!</h3>
+      <p>Our team will reach out soon with a plan to grow your business.</p>
+      <button class="btn" id="modalClose">Close</button>
+    </div>
+  </div>
+
+  <!-- confetti container -->
+  <div id="confetti-root" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
