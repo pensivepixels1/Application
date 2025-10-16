@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let curStep = 0;
 
   // Google Apps Script Web App URL (replace with yours)
-  const scriptURL = "https://script.google.com/macros/s/AKfycbyCG5B8gFRU6G-nAPoG2BD8xWTglG-yW4oxbVDVlz_6p91kT-03b6Q4Sbu0-IbmJ7s/exec";
+  const scriptURL = "https://script.google.com/macros/s/AKfycbzAtV6pqAm4tK_2-wGsTWaFJ6V30RBhGxEdpGcTe_Mp2EvPId3nkZxFVk4IheNwH_pe/exec";
 
   // update progress bar
   function updateProgress() {
@@ -62,29 +62,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!contactMethod) { curStep = 1; updateProgress(); return; }
     if (!contact.value.trim()) { shake(contact); curStep = 1; updateProgress(); contact.focus(); return; }
 
-    // prepare payload
     const payload = {
-      timestamp: new Date().toISOString(),
-      fullName: name.value.trim(),
-      businessName: document.getElementById('businessName').value.trim(),
+      fullName: document.getElementById('fullName').value,
+      businessName: document.getElementById('businessName').value,
       businessType: document.getElementById('businessType').value,
-      social: document.getElementById('social').value.trim(),
-      services: services.map(s=>s.value).join(', '),
-      contactMethod: Array.from(document.querySelectorAll('input[name="contactMethod"]')).find(r=>r.checked).value,
-      contactDetails: contact.value.trim(),
-      additionalInfo: document.getElementById('additionalInfo').value.trim(),
+      social: document.getElementById('social').value,
+      services: Array.from(document.querySelectorAll('input[name="services"]:checked')).map(s => s.value).join(', '),
+      contactMethod: Array.from(document.querySelectorAll('input[name="contactMethod"]')).find(r => r.checked).value,
+      contactDetails: document.getElementById('contactDetails').value,
+      additionalInfo: document.getElementById('additionalInfo').value,
       hearAbout: document.getElementById('hearAbout').value
     };
 
     // send to Google Sheets
     try {
-      await fetch(scriptURL, {
+      const response = await fetch(scriptURL, {
         method: 'POST',
         body: new URLSearchParams(payload)
       });
+      const data = await response.json();
+      if (data.status !== "success") throw new Error(data.message || "Unknown error");
     } catch(err) {
-      console.error("Error sending to Google Sheets:", err);
-      alert("Form submission failed. Please try again.");
+      console.error(err);
+      alert("Form submission failed: " + err.message);
       return;
     }
 
@@ -174,4 +174,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // admin quick debug
   window._pp_get_leads = ()=> JSON.parse(localStorage.getItem('pensivePixelsSubmissions') || '[]');
 });
+
 
