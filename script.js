@@ -174,3 +174,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // admin quick debug
   window._pp_get_leads = ()=> JSON.parse(localStorage.getItem('pensivePixelsSubmissions') || '[]');
 });
+
